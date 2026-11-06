@@ -5,122 +5,266 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TYPE OR EXPLODE | Ultimate Typing Battle</title>
+
 <style>
 :root {
-  --purple:#9b5cff;
-  --blue:#258cff;
-  --red:#ff3559;
-  --white:#f8f7ff;
-  --black:#080812;
-  --panel:#15152a;
+ --purple:#9b5cff;
+ --blue:#258cff;
+ --red:#ff3559;
+ --white:#f8f7ff;
+ --black:#080812;
+ --panel:#15152a;
 }
-*{box-sizing:border-box}
-body{
-  margin:0;min-height:100vh;padding:20px;
-  display:flex;align-items:center;justify-content:center;
-  font-family:Arial,sans-serif;color:var(--white);
-  background:radial-gradient(circle at 50% 0%,#302052,#101020 45%,#07070e);
+
+* { box-sizing:border-box; }
+
+body {
+ margin:0;
+ min-height:100vh;
+ padding:20px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-family:Arial,sans-serif;
+ color:var(--white);
+ background:radial-gradient(circle at 50% 0%,#302052,#101020 45%,#07070e);
 }
-.game{
-  width:100%;max-width:820px;padding:25px;
-  background:rgba(18,18,38,.96);
-  border:1px solid #7443bd;border-radius:24px;
-  box-shadow:0 0 35px #793cff35,0 15px 50px #0009;
+
+.game {
+ width:100%;
+ max-width:820px;
+ padding:25px;
+ background:rgba(18,18,38,.96);
+ border:1px solid #7443bd;
+ border-radius:24px;
+ box-shadow:0 0 35px #793cff35,0 15px 50px #0009;
 }
-header{text-align:center}
-.logo{
-  font-size:clamp(28px,6vw,47px);font-weight:1000;
-  letter-spacing:2px;color:white;
-  text-shadow:0 0 15px var(--purple);
+
+header { text-align:center; }
+
+.logo {
+ font-size:clamp(28px,6vw,47px);
+ font-weight:1000;
+ letter-spacing:2px;
+ color:white;
+ text-shadow:0 0 15px var(--purple);
 }
-.logo span{color:var(--red)}
-.subtitle{color:#b9b3d0;font-size:13px;letter-spacing:3px}
-.topbar{
-  display:flex;justify-content:space-between;
-  gap:10px;flex-wrap:wrap;margin:22px 0;
+
+.logo span { color:var(--red); }
+
+.subtitle {
+ color:#b9b3d0;
+ font-size:13px;
+ letter-spacing:3px;
 }
-button,select{
-  padding:11px 15px;border-radius:10px;
-  border:1px solid #65508e;background:#211b39;
-  color:white;font-weight:bold;cursor:pointer;
+
+.topbar {
+ display:flex;
+ justify-content:space-between;
+ gap:10px;
+ flex-wrap:wrap;
+ margin:22px 0;
 }
-button:hover{filter:brightness(1.3)}
-.sound.on{background:#1a3762;border-color:var(--blue)}
-.stats{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:10px;margin-bottom:20px;
+
+button,select {
+ padding:11px 15px;
+ border-radius:10px;
+ border:1px solid #65508e;
+ background:#211b39;
+ color:white;
+ font-weight:bold;
+ cursor:pointer;
 }
-.stat{
-  background:linear-gradient(140deg,#201a39,#17172c);
-  padding:15px 5px;border-radius:13px;
-  border:1px solid #40325f;text-align:center;
+
+button:hover { filter:brightness(1.3); }
+
+.sound.on {
+ background:#1a3762;
+ border-color:var(--blue);
 }
-.stat small{color:#aaa2c5;display:block;margin-bottom:7px}
-.stat strong{font-size:clamp(19px,4vw,27px)}
-.purple{color:var(--purple)}
-.blue{color:var(--blue)}
-.red{color:var(--red)}
-.arena{
-  background:radial-gradient(circle,#242044,#111123 70%);
-  border:1px solid #4c3977;border-radius:18px;
-  text-align:center;padding:22px 12px;margin-bottom:18px;
+
+.stats {
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:10px;
+ margin-bottom:20px;
 }
-.bomb{
-  font-size:85px;display:block;
-  filter:drop-shadow(0 0 16px #ff355977);
-  animation:pulse 1s infinite;
+
+.stat {
+ background:linear-gradient(140deg,#201a39,#17172c);
+ padding:15px 5px;
+ border-radius:13px;
+ border:1px solid #40325f;
+ text-align:center;
 }
-@keyframes pulse{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.08)}
+
+.stat small {
+ color:#aaa2c5;
+ display:block;
+ margin-bottom:7px;
 }
-.word{
-  font-size:clamp(24px,5vw,36px);font-weight:900;
-  letter-spacing:2px;color:#b58cff;
-  overflow-wrap:anywhere;margin:14px 0;
-  text-shadow:0 0 12px #9b5cff77;
+
+.stat strong {
+ font-size:clamp(19px,4vw,27px);
 }
-.prompt{color:#aaa2c5;font-size:12px;letter-spacing:2px}
-input{
-  display:block;width:100%;padding:17px;
-  background:#090914;color:white;
-  border:2px solid #6946a6;border-radius:12px;
-  text-align:center;font-size:20px;outline:none;
+
+.purple { color:var(--purple); }
+.blue { color:var(--blue); }
+.red { color:var(--red); }
+
+.arena {
+ background:radial-gradient(circle,#242044,#111123 70%);
+ border:1px solid #4c3977;
+ border-radius:18px;
+ text-align:center;
+ padding:22px 12px;
+ margin-bottom:18px;
+ transition:.3s;
 }
-input:focus{border-color:var(--blue);box-shadow:0 0 15px #258cff55}
-input:disabled{opacity:.5}
-.progress{
-  height:11px;background:#302a43;
-  border-radius:20px;overflow:hidden;margin-top:17px;
+
+.arena.urgent {
+ border-color:var(--red);
+ box-shadow:0 0 22px #ff355955;
 }
-.bar{height:100%;width:100%;background:var(--blue);transition:width .2s}
-.message{min-height:24px;color:#c5bce0;margin:15px 0 5px}
-.actions{text-align:center}
-.primary{
-  background:linear-gradient(100deg,#7841d8,#a34dff);
-  border:0;padding:14px 27px;
+
+.bomb {
+ font-size:85px;
+ display:block;
+ filter:drop-shadow(0 0 16px #ff355977);
+ animation:pulse 1s infinite;
 }
-.secondary{background:#20243e;border-color:#258cff}
-.result{
-  text-align:center;background:#1c1830;
-  border:1px solid var(--purple);padding:20px;
-  border-radius:15px;margin-top:18px;
+
+@keyframes pulse {
+ 0%,100% { transform:scale(1); }
+ 50% { transform:scale(1.08); }
 }
-.result h2{color:#c19aff}
-.hidden{display:none}
-.footer{text-align:center;color:#77718e;font-size:11px;margin-top:20px}
-select{max-width:150px}
-@media(max-width:500px){
- .game{padding:16px}
- .stats{grid-template-columns:repeat(2,1fr)}
- .topbar{justify-content:center}
- .bomb{font-size:70px}
+
+.word {
+ font-size:clamp(24px,5vw,36px);
+ font-weight:900;
+ letter-spacing:2px;
+ color:#b58cff;
+ overflow-wrap:anywhere;
+ margin:14px 0;
+ text-shadow:0 0 12px #9b5cff77;
+}
+
+.prompt {
+ color:#aaa2c5;
+ font-size:12px;
+ letter-spacing:2px;
+}
+
+input {
+ display:block;
+ width:100%;
+ padding:17px;
+ background:#090914;
+ color:white;
+ border:2px solid #6946a6;
+ border-radius:12px;
+ text-align:center;
+ font-size:20px;
+ outline:none;
+}
+
+input:focus {
+ border-color:var(--blue);
+ box-shadow:0 0 15px #258cff55;
+}
+
+input:disabled { opacity:.5; }
+
+.progress {
+ height:11px;
+ background:#302a43;
+ border-radius:20px;
+ overflow:hidden;
+ margin-top:17px;
+}
+
+.bar {
+ height:100%;
+ width:100%;
+ background:var(--blue);
+ transition:width .2s;
+}
+
+.message {
+ min-height:24px;
+ color:#c5bce0;
+ margin:15px 0 5px;
+}
+
+.message.urgent {
+ color:var(--red);
+ font-weight:bold;
+ animation:warningFlash .5s infinite;
+}
+
+#time.warning {
+ color:var(--red)!important;
+ animation:timerFlash .5s infinite;
+ text-shadow:0 0 15px var(--red);
+}
+
+@keyframes timerFlash {
+ 0%,100% { opacity:1; transform:scale(1); }
+ 50% { opacity:.35; transform:scale(1.12); }
+}
+
+@keyframes warningFlash {
+ 50% { opacity:.4; }
+}
+
+.actions { text-align:center; }
+
+.primary {
+ background:linear-gradient(100deg,#7841d8,#a34dff);
+ border:0;
+ padding:14px 27px;
+}
+
+.secondary {
+ background:#20243e;
+ border-color:var(--blue);
+}
+
+.result {
+ text-align:center;
+ background:#1c1830;
+ border:1px solid var(--purple);
+ padding:20px;
+ border-radius:15px;
+ margin-top:18px;
+}
+
+.result h2 { color:#c19aff; }
+
+.hidden { display:none; }
+
+.footer {
+ text-align:center;
+ color:#77718e;
+ font-size:11px;
+ margin-top:20px;
+}
+
+select { max-width:150px; }
+
+@media(max-width:500px) {
+ .game { padding:16px; }
+ .stats { grid-template-columns:repeat(2,1fr); }
+ .topbar { justify-content:center; }
+ .bomb { font-size:70px; }
 }
 </style>
 </head>
+
 <body>
 
 <main class="game">
+
 <header>
  <div class="logo">💣 TYPE <span>OR EXPLODE</span></div>
  <div class="subtitle">ULTIMATE TYPING BATTLE</div>
@@ -132,240 +276,659 @@ select{max-width:150px}
   <option value="medium" selected>🔵 Medium</option>
   <option value="hard">🔴 Hard</option>
  </select>
- <button id="soundBtn" class="sound on">🔊 SOUND ON</button>
+
+ <button id="soundBtn" class="sound on">
+ 🔊 SOUND ON
+ </button>
 </div>
 
 <section class="stats">
- <div class="stat"><small>SCORE</small><strong class="purple" id="score">0</strong></div>
- <div class="stat"><small>TIME</small><strong class="red" id="time">60</strong></div>
- <div class="stat"><small>LIVES</small><strong id="lives">❤️❤️❤️</strong></div>
- <div class="stat"><small>ACCURACY</small><strong class="blue" id="accuracy">100%</strong></div>
+
+ <div class="stat">
+  <small>SCORE</small>
+  <strong class="purple" id="score">0</strong>
+ </div>
+
+ <div class="stat">
+  <small>TIME</small>
+  <strong class="red" id="time">60</strong>
+ </div>
+
+ <div class="stat">
+  <small>LIVES</small>
+  <strong id="lives">❤️❤️❤️</strong>
+ </div>
+
+ <div class="stat">
+  <small>ACCURACY</small>
+  <strong class="blue" id="accuracy">100%</strong>
+ </div>
+
 </section>
 
-<section class="arena">
+<section class="arena" id="arena">
+
  <div class="bomb" id="bomb">💣</div>
- <div class="prompt">TYPE THE WORD TO DEFUSE THE BOMB</div>
+
+ <div class="prompt">
+ TYPE THE WORD TO DEFUSE THE BOMB
+ </div>
+
  <div class="word" id="word">READY?</div>
- <input id="typing" type="text" placeholder="Type here..." autocomplete="off" spellcheck="false" disabled>
- <div class="progress"><div class="bar" id="bar"></div></div>
- <div class="message" id="message">Press START GAME to begin!</div>
+
+ <input
+  id="typing"
+  type="text"
+  placeholder="Type here..."
+  autocomplete="off"
+  spellcheck="false"
+  disabled
+ >
+
+ <div class="progress">
+  <div class="bar" id="bar"></div>
+ </div>
+
+ <div class="message" id="message">
+ Press START GAME to begin!
+ </div>
+
 </section>
 
 <div class="actions">
- <button class="primary" id="startBtn">▶ START GAME</button>
- <button class="secondary" id="resetBtn">↻ RESET</button>
+ <button class="primary" id="startBtn">
+ ▶ START GAME
+ </button>
+
+ <button class="secondary" id="resetBtn">
+ ↻ RESET
+ </button>
 </div>
 
 <section id="result" class="result hidden">
+
  <h2 id="resultTitle">GAME OVER!</h2>
+
  <h3 id="finalScore">Score: 0</h3>
+
  <p id="finalAccuracy"></p>
+
  <p id="bestScore"></p>
- <button class="primary" id="againBtn">PLAY AGAIN</button>
+
+ <button class="primary" id="againBtn">
+ PLAY AGAIN
+ </button>
+
 </section>
 
 <div class="footer">
  TYPE FAST • THINK QUICK • SURVIVE THE EXPLOSION
- <br>TYPE OR EXPLODE © 2026
+ <br>
+ TYPE OR EXPLODE © 2026
 </div>
+
 </main>
 
 <script>
-const words={
- easy:["computer","mouse","keyboard","screen","folder","printer","monitor","internet","laptop","website"],
- medium:["technology","javascript","software","hardware","database","password","download","programming","network","browser"],
- hard:["cybersecurity","microprocessor","troubleshooting","authentication","communication","configuration","information","cryptography","accessibility","virtualization"]
+
+// ===============================
+// WORD DATABASE
+// ===============================
+
+const words = {
+ easy:[
+ "computer","mouse","keyboard","screen",
+ "folder","printer","monitor","internet",
+ "laptop","website"
+ ],
+
+ medium:[
+ "technology","javascript","software",
+ "hardware","database","password",
+ "download","programming","network","browser"
+ ],
+
+ hard:[
+ "cybersecurity","microprocessor",
+ "troubleshooting","authentication",
+ "communication","configuration",
+ "information","cryptography",
+ "accessibility","virtualization"
+ ]
 };
 
-const $=id=>document.getElementById(id);
-let score=0,lives=3,time=60,attempts=0,correct=0;
-let currentWord="",active=false,soundOn=true;
-let timer=null,bombTimer=null,bombTime=0,maxBombTime=0;
+// ===============================
+// GAME VARIABLES
+// ===============================
+
+const $ = id => document.getElementById(id);
+
+let score=0;
+let lives=3;
+let time=60;
+let attempts=0;
+let correct=0;
+
+let currentWord="";
+let active=false;
+let soundOn=true;
+
+let timer=null;
+let bombTimer=null;
+
+let bombTime=0;
+let maxBombTime=0;
+let lastWarning=60;
+
 let audio=null;
 
-function initAudio(){
- if(!audio){
-  const AudioContext=window.AudioContext||window.webkitAudioContext;
+// ===============================
+// SOUND SYSTEM
+// ===============================
+
+function initAudio() {
+ if(!audio) {
+  const AudioContext =
+   window.AudioContext || window.webkitAudioContext;
+
   if(AudioContext) audio=new AudioContext();
  }
- if(audio && audio.state==="suspended")audio.resume();
+
+ if(audio && audio.state==="suspended") {
+  audio.resume();
+ }
 }
 
-function tone(freq=440,duration=.12,type="sine",volume=.08){
- if(!soundOn)return;
+function tone(freq=440,duration=.12,type="sine",volume=.08) {
+ if(!soundOn) return;
+
  initAudio();
- if(!audio)return;
+ if(!audio) return;
+
  const osc=audio.createOscillator();
  const gain=audio.createGain();
+
  osc.type=type;
  osc.frequency.value=freq;
+
  gain.gain.setValueAtTime(volume,audio.currentTime);
- gain.gain.exponentialRampToValueAtTime(.001,audio.currentTime+duration);
- osc.connect(gain);gain.connect(audio.destination);
- osc.start();osc.stop(audio.currentTime+duration);
+
+ gain.gain.exponentialRampToValueAtTime(
+  .001,audio.currentTime+duration
+ );
+
+ osc.connect(gain);
+ gain.connect(audio.destination);
+
+ osc.start();
+ osc.stop(audio.currentTime+duration);
 }
 
-function successSound(){
- tone(660,.1);setTimeout(()=>tone(880,.16),100);
+function successSound() {
+ tone(660,.1);
+ setTimeout(()=>tone(880,.16),100);
 }
-function errorSound(){tone(150,.25,"sawtooth",.09)}
-function tickSound(){tone(600,.05,"square",.025)}
-function explosionSound(){
+
+function errorSound() {
+ tone(150,.25,"sawtooth",.09);
+}
+
+function tickSound() {
+ tone(600,.05,"square",.025);
+}
+
+function rapidTick() {
+ tone(1000,.07,"square",.07);
+}
+
+function warningSound() {
+ tone(880,.18,"square",.12);
+ setTimeout(()=>tone(660,.18,"square",.12),200);
+}
+
+function explosionSound() {
  tone(90,.6,"sawtooth",.15);
  setTimeout(()=>tone(55,.5,"sawtooth",.12),100);
 }
-function victorySound(){
- [523,659,784,1046].forEach((f,i)=>setTimeout(()=>tone(f,.2),i*150));
+
+function victorySound() {
+ [523,659,784,1046].forEach((f,i)=>{
+  setTimeout(()=>tone(f,.2),i*150);
+ });
 }
 
-function updateStats(){
+// ===============================
+// UPDATE DISPLAY
+// ===============================
+
+function updateStats() {
+
  $("score").textContent=score;
  $("time").textContent=time;
- $("lives").textContent="❤️".repeat(lives)+"🖤".repeat(3-lives);
- $("accuracy").textContent=(attempts?Math.round(correct/attempts*100):100)+"%";
+
+ $("lives").textContent=
+  "❤️".repeat(lives)+"🖤".repeat(3-lives);
+
+ const accuracy=attempts
+  ? Math.round(correct/attempts*100)
+  : 100;
+
+ $("accuracy").textContent=accuracy+"%";
 }
 
-function updateBar(){
- const percent=Math.max(0,bombTime/maxBombTime*100);
+function updateBar() {
+
+ const percent=Math.max(
+  0,bombTime/maxBombTime*100
+ );
+
  $("bar").style.width=percent+"%";
- $("bar").style.background=percent<30?"#ff3559":"#258cff";
+
+ $("bar").style.background=
+  percent<30 ? "#ff3559" : "#258cff";
 }
 
-function randomWord(){
+// ===============================
+// WARNING SYSTEM
+// ===============================
+
+function updateTimeWarning() {
+
+ const timerDisplay=$("time");
+ const message=$("message");
+ const arena=$("arena");
+
+ timerDisplay.classList.remove("warning");
+ message.classList.remove("urgent");
+ arena.classList.remove("urgent");
+
+ if(time<=15 && time>0) {
+
+  timerDisplay.classList.add("warning");
+  message.classList.add("urgent");
+  arena.classList.add("urgent");
+
+  if(time<=5) {
+
+   message.textContent=
+    "💣 CRITICAL! "+time+
+    " SECONDS LEFT! TYPE FASTER!";
+
+   rapidTick();
+
+  } else if(time<=10) {
+
+   message.textContent=
+    "🚨 WARNING! ONLY "+time+
+    " SECONDS LEFT!";
+
+   if(lastWarning>10) warningSound();
+
+  } else {
+
+   message.textContent=
+    "⚠️ TIME IS RUNNING OUT!";
+
+   if(time===15 && lastWarning>15) {
+    warningSound();
+   }
+  }
+ }
+
+ lastWarning=time;
+}
+
+function clearWarnings() {
+
+ $("time").classList.remove("warning");
+ $("message").classList.remove("urgent");
+ $("arena").classList.remove("urgent");
+
+}
+
+// ===============================
+// RANDOM WORD
+// ===============================
+
+function randomWord() {
+
  const list=words[$("difficulty").value];
- return list[Math.floor(Math.random()*list.length)];
+
+ return list[
+  Math.floor(Math.random()*list.length)
+ ];
 }
 
-function newBomb(){
- if(!active)return;
+// ===============================
+// NEW BOMB
+// ===============================
+
+function newBomb() {
+
+ if(!active) return;
+
  clearInterval(bombTimer);
+
  currentWord=randomWord();
+
  $("word").textContent=currentWord;
+
  const level=$("difficulty").value;
- maxBombTime=level==="easy"?12:level==="medium"?8:5;
+
+ maxBombTime=
+  level==="easy" ? 12 :
+  level==="medium" ? 8 : 5;
+
  bombTime=maxBombTime;
+
  updateBar();
+
  $("bomb").textContent="💣";
+
  $("typing").value="";
  $("typing").focus();
 
  bombTimer=setInterval(()=>{
-  bombTime--;
-  updateBar();
-  if(bombTime<=3 && bombTime>0)tickSound();
 
-  if(bombTime<=0){
+  if(!active) return;
+
+  bombTime--;
+
+  updateBar();
+
+  if(bombTime<=3 && bombTime>0) {
+   tickSound();
+  }
+
+  if(bombTime<=0) {
    clearInterval(bombTimer);
    explosion();
   }
+
  },1000);
 }
 
-function explosion(){
- if(!active)return;
+// ===============================
+// EXPLOSION
+// ===============================
+
+function explosion() {
+
+ if(!active) return;
+
  explosionSound();
+
  $("bomb").textContent="💥";
- $("message").textContent="BOOM! You missed the word!";
- lives--;attempts++;
+
+ $("message").textContent=
+  "BOOM! You missed the word!";
+
+ lives--;
+ attempts++;
+
  updateStats();
- if(lives<=0){
+
+ if(lives<=0) {
+
   setTimeout(()=>endGame(false),450);
- }else{
+
+ } else {
+
   setTimeout(newBomb,450);
  }
 }
 
-function startGame(){
- clearInterval(timer);clearInterval(bombTimer);
- score=0;lives=3;time=60;attempts=0;correct=0;
- active=true;
- $("typing").disabled=false;
- $("difficulty").disabled=true;
- $("result").classList.add("hidden");
- $("startBtn").classList.add("hidden");
- $("message").textContent="🔥 Game started! Type quickly!";
- updateStats();
- initAudio();
- newBomb();
+// ===============================
+// TIME WARNING TIMER
+// ===============================
+
+function startCountdown() {
+
+ clearInterval(timer);
 
  timer=setInterval(()=>{
-  if(!active)return;
+
+  if(!active) return;
+
   time--;
+
   updateStats();
-  if(time<=0)endGame(true);
+  updateTimeWarning();
+
+  if(time<=0) {
+
+   clearInterval(timer);
+   clearInterval(bombTimer);
+
+   active=false;
+
+   explosionSound();
+
+   $("bomb").textContent="💥";
+
+   setTimeout(()=>endGame(true),400);
+  }
+
  },1000);
 }
 
+// ===============================
+// START GAME
+// ===============================
+
+function startGame() {
+
+ clearInterval(timer);
+ clearInterval(bombTimer);
+
+ score=0;
+ lives=3;
+ time=60;
+ attempts=0;
+ correct=0;
+
+ active=true;
+ lastWarning=60;
+
+ clearWarnings();
+
+ $("typing").disabled=false;
+ $("difficulty").disabled=true;
+
+ $("result").classList.add("hidden");
+ $("startBtn").classList.add("hidden");
+
+ $("message").textContent=
+  "🔥 Game started! Type quickly!";
+
+ updateStats();
+
+ initAudio();
+
+ newBomb();
+ startCountdown();
+}
+
+// ===============================
+// CHECK TYPING
+// ===============================
+
 $("typing").addEventListener("input",()=>{
- if(!active)return;
+
+ if(!active) return;
+
  const value=$("typing").value;
- if(value.length>0){
-  if(currentWord.toLowerCase().startsWith(value.toLowerCase())){
-   // Correct letters so far
-  }else{
+
+ if(value.length>0) {
+
+  if(!currentWord.toLowerCase().startsWith(
+   value.toLowerCase()
+  )) {
    errorSound();
   }
  }
- if(value.trim().toLowerCase()===currentWord.toLowerCase()){
+
+ if(value.trim().toLowerCase()===
+  currentWord.toLowerCase()) {
+
   clearInterval(bombTimer);
+
   score+=10;
-  correct++;attempts++;
+  correct++;
+  attempts++;
+
   successSound();
-  $("message").textContent="⚡ BOMB DEFUSED! +10 POINTS!";
+
+  $("message").textContent=
+   "⚡ BOMB DEFUSED! +10 POINTS!";
+
   updateStats();
+
   newBomb();
  }
 });
 
-function endGame(timeUp){
- if(!active)return;
+// ===============================
+// END GAME
+// ===============================
+
+function endGame(timeUp) {
+
+ if(!active && !$("result").classList.contains("hidden")) {
+  return;
+ }
+
  active=false;
- clearInterval(timer);clearInterval(bombTimer);
+
+ clearInterval(timer);
+ clearInterval(bombTimer);
+
  $("typing").disabled=true;
  $("difficulty").disabled=false;
- const accuracy=attempts?Math.round(correct/attempts*100):100;
- const best=Math.max(score,Number(localStorage.getItem("typeExplodeBest")||0));
+
+ clearWarnings();
+
+ const accuracy=attempts
+  ? Math.round(correct/attempts*100)
+  : 100;
+
+ const oldBest=Number(
+  localStorage.getItem("typeExplodeBest")||0
+ );
+
+ const isNewRecord=score>oldBest;
+
+ const best=Math.max(score,oldBest);
+
  localStorage.setItem("typeExplodeBest",best);
- if(score>0 && score>=best)victorySound();
+
+ if(isNewRecord && score>0) {
+  victorySound();
+ }
 
  $("result").classList.remove("hidden");
- $("resultTitle").textContent=timeUp?"🏆 TIME'S UP!":"💥 GAME OVER!";
- $("finalScore").textContent="YOUR SCORE: "+score;
- $("finalAccuracy").textContent="Accuracy: "+accuracy+"%";
- $("bestScore").textContent="🏆 PERSONAL BEST: "+best;
+
+ $("resultTitle").textContent=
+  timeUp ? "🏆 TIME'S UP!" : "💥 GAME OVER!";
+
+ $("finalScore").textContent=
+  "YOUR SCORE: "+score;
+
+ $("finalAccuracy").textContent=
+  "Accuracy: "+accuracy+"%";
+
+ $("bestScore").textContent=
+  (isNewRecord && score>0 ? "🎉 NEW RECORD! " : "🏆 PERSONAL BEST: ")+best;
+
  $("word").textContent="FINISHED!";
- $("bomb").textContent=timeUp?"🏆":"💥";
- $("message").textContent="Challenge completed! Try to beat your record.";
+
+ $("bomb").textContent=
+  timeUp ? "🏆" : "💥";
+
+ $("message").textContent=
+  "Challenge completed! Try to beat your record.";
+
  $("startBtn").classList.remove("hidden");
 }
 
-function resetGame(){
- clearInterval(timer);clearInterval(bombTimer);
- active=false;score=0;lives=3;time=60;attempts=0;correct=0;
+// ===============================
+// RESET GAME
+// ===============================
+
+function resetGame() {
+
+ clearInterval(timer);
+ clearInterval(bombTimer);
+
+ active=false;
+
+ score=0;
+ lives=3;
+ time=60;
+ attempts=0;
+ correct=0;
+
+ lastWarning=60;
+
  $("typing").disabled=true;
  $("typing").value="";
+
  $("difficulty").disabled=false;
+
  $("word").textContent="READY?";
  $("bomb").textContent="💣";
+
  $("bar").style.width="100%";
+
  $("result").classList.add("hidden");
  $("startBtn").classList.remove("hidden");
- $("message").textContent="Press START GAME to begin!";
+
+ $("message").textContent=
+  "Press START GAME to begin!";
+
+ clearWarnings();
+
  updateStats();
 }
 
-$("startBtn").addEventListener("click",startGame);
-$("againBtn").addEventListener("click",startGame);
-$("resetBtn").addEventListener("click",resetGame);
+// ===============================
+// SOUND BUTTON
+// ===============================
 
 $("soundBtn").addEventListener("click",()=>{
+
  soundOn=!soundOn;
- $("soundBtn").textContent=soundOn?"🔊 SOUND ON":"🔇 SOUND OFF";
+
+ $("soundBtn").textContent=
+  soundOn ? "🔊 SOUND ON" : "🔇 SOUND OFF";
+
  $("soundBtn").classList.toggle("on",soundOn);
- if(soundOn){initAudio();successSound();}
+
+ if(soundOn) {
+  initAudio();
+  successSound();
+ }
 });
 
+// ===============================
+// BUTTON EVENTS
+// ===============================
+
+$("startBtn").addEventListener(
+ "click",startGame
+);
+
+$("againBtn").addEventListener(
+ "click",startGame
+);
+
+$("resetBtn").addEventListener(
+ "click",resetGame
+);
+
+// INITIALIZE
 updateStats();
+
 </script>
 </body>
 </html>
